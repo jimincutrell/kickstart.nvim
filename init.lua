@@ -112,12 +112,13 @@ require('lazy').setup({
     },
   },
 
-  { -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
+  {
+    'junegunn/seoul256.vim',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'onedark'
-    end,
+      vim.g.seoul256_background = 234
+      vim.cmd.colorscheme 'seoul256'
+    end
   },
 
   { -- Set lualine as statusline
