@@ -113,11 +113,10 @@ require('lazy').setup({
   },
 
   {
-    'junegunn/seoul256.vim',
+    'folke/tokyonight.nvim',
     priority = 1000,
     config = function()
-      vim.g.seoul256_background = 234
-      vim.cmd.colorscheme 'seoul256'
+      vim.cmd.colorscheme 'tokyonight-night'
     end
   },
 
@@ -140,7 +139,7 @@ require('lazy').setup({
     -- See `:help indent_blankline.txt`
     opts = {
       char = '┊',
-      show_trailing_blankline_indent = false,
+      show_trailing_blankline_indent = false
     },
   },
 
@@ -196,6 +195,7 @@ vim.o.hlsearch = false
 
 -- Make line numbers default
 vim.wo.number = true
+vim.opt.relativenumber = true
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
@@ -207,6 +207,10 @@ vim.o.clipboard = 'unnamedplus'
 
 -- Enable break indent
 vim.o.breakindent = true
+
+-- Show indents
+vim.opt.list = true
+vim.opt.listchars:append 'space:·'
 
 -- Save undo history
 vim.o.undofile = true
@@ -238,6 +242,14 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+-- Replace command line mode
+vim.keymap.set('n', '<leader>;', ':', { desc = '[;] Toggle command line mode' })
+vim.keymap.set('v', '<leader>;', ':', { desc = '[;] Toggle command line mode' })
+
+-- Shortcuts for file saving
+vim.keymap.set('n', 'zz', vim.cmd.update)
+vim.keymap.set('v', 'zz', vim.cmd.update)
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -291,7 +303,11 @@ require('nvim-treesitter.configs').setup {
   ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vimdoc', 'vim' },
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
-  auto_install = false,
+  auto_install = true,
+
+  autotag = {
+    enable = true
+  },
 
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },
@@ -411,7 +427,7 @@ local servers = {
   -- gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
-  -- tsserver = {},
+  tsserver = {},
 
   lua_ls = {
     Lua = {
