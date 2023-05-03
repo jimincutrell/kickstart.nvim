@@ -122,6 +122,10 @@ require('lazy').setup({
     build = ":TSUpdate",
   },
 
+  {
+    'windwp/nvim-ts-autotag'
+  },
+
   -- NOTE: The import below automatically adds your own plugins, configuration, etc from `lua/plugins/*.lua`
   --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
   --    up-to-date with whatever is in the kickstart repo.
@@ -252,7 +256,8 @@ require('nvim-treesitter.configs').setup {
   auto_install = true,
 
   autotag = {
-    enable = true
+    enable = true,
+    filetypes = { 'html', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'jsx', 'tsx', 'markdown' }
   },
 
   highlight = { enable = true },
