@@ -142,10 +142,29 @@ require('lazy').setup({
 
 -- Set highlight on search
 vim.o.hlsearch = false
+vim.o.incsearch = true
 
 -- Make line numbers default
 vim.wo.number = true
 vim.opt.relativenumber = true
+
+-- Indent options
+vim.opt.tabstop = 4
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.smartindent = true
+
+-- Super paste
+vim.keymap.set('x', '<leader>p', [['_dP]])
+
+-- Worst place in the universe
+vim.keymap.set('n', 'Q', '<nop>')
+
+-- Switch projects via tmux
+vim.keymap.set('n', '<C-f>', '<cmd>silent !tmux neww tmux-sessionizer<CR>')
+
+-- Replace helpers
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
