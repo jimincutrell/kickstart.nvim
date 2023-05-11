@@ -88,6 +88,9 @@ require('lazy').setup({
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
+
+      -- For Java completion
+      'mfussenegger/nvim-jdtls'
     },
   },
 
