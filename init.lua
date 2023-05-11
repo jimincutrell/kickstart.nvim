@@ -150,12 +150,33 @@ vim.opt.relativenumber = true
 
 -- Indent options
 vim.opt.tabstop = 4
-vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.smartindent = true
 
+-- Move visual blocks
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
+
+vim.keymap.set('n', 'J', 'mzJ`z')
+
+-- Half-page jumps with cursor in middle
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
+vim.keymap.set('n', 'n', 'nzzzv')
+vim.keymap.set('n', 'N', 'Nzzzv')
+
 -- Super paste
 vim.keymap.set('x', '<leader>p', [['_dP]])
+
+-- Copy to system clipboard
+vim.keymap.set('n', '<leader>y', "\"+y")
+vim.keymap.set('v', '<leader>y', "\"+y")
+vim.keymap.set('n', '<leader>Y', "\"+Y")
+
+-- Delete to void register
+vim.keymap.set('n', '<leader>d', "\"_d")
+vim.keymap.set('v', '<leader>d', "\"_d")
 
 -- Worst place in the universe
 vim.keymap.set('n', 'Q', '<nop>')
