@@ -97,7 +97,12 @@ require('lazy').setup({
   {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
-    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+    dependencies = {
+      'hrsh7th/cmp-nvim-lsp',
+      'L3MON4D3/LuaSnip',
+      'saadparwaiz1/cmp_luasnip',
+      'onsails/lspkind.nvim'
+    },
   },
 
   -- Fuzzy Finder (files, lsp, etc)
@@ -467,6 +472,9 @@ local luasnip = require 'luasnip'
 
 luasnip.config.setup {}
 
+local lspkind = require 'lspkind'
+vim.api.nvim_set_hl(0, 'CmpItemKindCopilot', { fg = '#6CC644' })
+
 cmp.setup {
   snippet = {
     expand = function(args)
@@ -502,10 +510,20 @@ cmp.setup {
       end
     end, { 'i', 's' }),
   },
+  formatting = {
+    format = lspkind.cmp_format {
+      mode = 'symbol',
+      maxwidth = 50,
+      ellipsis_char = '...',
+      symbol_map = {
+        Copilot = ""
+      }
+    },
+  },
   sources = {
-    { name = "copilot" },
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
+    { name = "copilot", group_index = 2 },
+    { name = 'nvim_lsp', group_index = 2 },
+    { name = 'luasnip', group_index = 2 },
   },
 }
 
