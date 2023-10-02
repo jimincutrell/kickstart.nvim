@@ -247,6 +247,9 @@ vim.keymap.set('v', '<leader>;', ':', { desc = '[;] Toggle command line mode' })
 vim.keymap.set('n', 'zz', vim.cmd.update)
 vim.keymap.set('v', 'zz', vim.cmd.update)
 
+-- Easy explorer
+vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -500,6 +503,7 @@ cmp.setup {
     end, { 'i', 's' }),
   },
   sources = {
+    { name = "copilot" },
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
   },
