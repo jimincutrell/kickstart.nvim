@@ -4,6 +4,7 @@ return {
 	event = 'InsertEnter',
 	dependencies = {
 		'hrsh7th/cmp-nvim-lsp',
+		'hrsh7th/cmp-path',
 		'L3MON4D3/LuaSnip',
 		'saadparwaiz1/cmp_luasnip',
 		'onsails/lspkind.nvim'
@@ -71,9 +72,10 @@ return {
 				},
 			},
 			sources = {
-				{ name = "copilot", group_index = 2 },
-				{ name = 'nvim_lsp', group_index = 2 },
-				{ name = 'luasnip', group_index = 2 },
+				{ name = 'copilot' },
+				{ name = 'nvim_lsp' },
+				{ name = 'luasnip' },
+				{ name = 'path' },
 			},
 		}
 	end
