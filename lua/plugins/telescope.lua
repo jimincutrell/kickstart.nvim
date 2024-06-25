@@ -25,6 +25,11 @@ return {
 						['<C-d>'] = false,
 					},
 				},
+				file_ignore_patterns = {
+					'%-lock%.json',
+					'src/static/.*',
+					'src/vendor/.*',
+				}
 			},
 			extensions = {
 				['ui-select'] = {
